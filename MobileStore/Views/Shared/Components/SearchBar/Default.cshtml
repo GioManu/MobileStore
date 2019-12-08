@@ -1,0 +1,29 @@
+﻿@model SearchBarViewModel
+
+<form class="text-center" style="padding-top:20px;" method="GET" asp-action="Index" asp-controller="Home" asp-route-page="1">
+    <div class="row">
+        <div class="col-lg-3">
+            <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="დასახელება" asp-for="pageParams.Name">
+        </div>
+        <div class="col-lg-3">
+            <select class="browser-default custom-select mb-4" asp-for="pageParams.ManufacturerID">
+                <option disabled selected hidden>მწარმოებელი</option>
+                @foreach (Manufacturer manu in Model.manufacturers)
+                {
+                    <option value=@manu.ManufaturerID>@manu.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-lg-2">
+            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-დან" asp-for="pageParams.PriceFrom">
+        </div>
+
+        <div class="col-lg-2">
+            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-მდე" asp-for="pageParams.PriceTo">
+        </div>
+        <div class="col-lg-2">
+            <button type="submit" class="btn btn-success">ძებნა</button>
+        </div>
+    </div>
+</form>

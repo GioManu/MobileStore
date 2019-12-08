@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileStore", "MobileStore\MobileStore.csproj", "{0DFCE13C-1CE3-404A-AF3F-F6791EF68AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DFCE13C-1CE3-404A-AF3F-F6791EF68AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DFCE13C-1CE3-404A-AF3F-F6791EF68AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DFCE13C-1CE3-404A-AF3F-F6791EF68AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DFCE13C-1CE3-404A-AF3F-F6791EF68AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0C7B93C-8A73-4670-81D9-8D81F7ECF487}
+	EndGlobalSection
+EndGlobal

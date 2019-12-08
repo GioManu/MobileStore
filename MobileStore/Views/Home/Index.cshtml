@@ -1,0 +1,17 @@
+﻿@model ProductsPageViewModel
+@{
+    ViewData["Title"] = "Mobile Store";
+}
+
+@await Component.InvokeAsync("SearchBar", new { searchBarViewModel = Model.SearchBarParams})
+<hr />
+@await Component.InvokeAsync("PageBar", new { pageViewModel = Model.PageParams})
+
+<hr />
+
+<div class="container">
+    @foreach (Product product in Model.Products)
+    {
+        @await Component.InvokeAsync("ProductCard", new { product = product })
+    }
+</div>
