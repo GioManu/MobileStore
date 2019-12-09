@@ -1,13 +1,20 @@
 ﻿@model SearchBarViewModel
+@{
 
+    var name = Model.pageParams.name;
+    var manufacturer = Model.pageParams.manufacturer;
+    var price_to = Model.pageParams.price_to;
+    var price_from = Model.pageParams.price_from;
+
+}
 <form class="text-center" style="padding-top:20px;" method="GET" asp-action="Index" asp-controller="Home" asp-route-page="1">
     <div class="row">
         <div class="col-lg-3">
-            <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="დასახელება" asp-for="pageParams.Name">
+            <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="დასახელება" asp-for="@name">
         </div>
         <div class="col-lg-3">
-            <select class="browser-default custom-select mb-4" asp-for="pageParams.ManufacturerID">
-                <option disabled selected hidden>მწარმოებელი</option>
+            <select class="browser-default custom-select mb-4" asp-for="@manufacturer">
+                <option value="0" selected>მწარმოებელი</option>
                 @foreach (Manufacturer manu in Model.manufacturers)
                 {
                     <option value=@manu.ManufaturerID>@manu.Name</option>
@@ -16,11 +23,11 @@
         </div>
 
         <div class="col-lg-2">
-            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-დან" asp-for="pageParams.PriceFrom">
+            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-დან" asp-for="@price_from">
         </div>
 
         <div class="col-lg-2">
-            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-მდე" asp-for="pageParams.PriceTo">
+            <input type="number" min="0" class="form-control mb-4 input-sm" id="priceTo" placeholder="ფასი-მდე" asp-for="@price_to">
         </div>
         <div class="col-lg-2">
             <button type="submit" class="btn btn-success">ძებნა</button>

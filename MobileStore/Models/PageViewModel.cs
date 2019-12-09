@@ -8,6 +8,6 @@ namespace MobileStore.Models
     public class PageViewModel
     {
         public int TotalPages { get; set; }
-        public int CurrentPage { get; set; }
+        public PageParametersViewModel PageParams { get; set; }
     }
 }

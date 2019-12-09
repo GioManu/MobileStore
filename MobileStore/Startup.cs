@@ -55,7 +55,11 @@ namespace MobileStore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{page?}/{name?}/{manufacturer?}/{priceFrom?}/{priceTo?}");
+                    pattern: "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "product",
+                    pattern: "{controller=Home}/{action=Product}/{productId}"
+                    );
             });
 
             //Initialize TestRecords

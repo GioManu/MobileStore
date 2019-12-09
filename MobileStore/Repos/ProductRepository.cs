@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MobileStore.Data;
 using MobileStore.DataModels;
 
@@ -17,12 +18,17 @@ namespace MobileStore.Repos
 
         public IEnumerable<Product> GetAll()
         {
-            return this.appDBContent.MobileProduct;
+            return this.appDBContent.MobileProduct
+                .Include((e) => e.Manufacturer)
+                .Include((e) => e.Images);
         }
 
-        public IEnumerable<Product> GetBy<T>(T args)
+        public Product GetByID(int prodID)
         {
-            throw new NotImplementedException();
+            return this.appDBContent.MobileProduct
+                .Where((e) => e.MobileProductID.Equals(prodID))
+                .Include((el) => el.Manufacturer)
+                .Include((img) => img.Images).FirstOrDefault();
         }
     }
 }

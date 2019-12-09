@@ -1,0 +1,23 @@
+﻿@model Product
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>
+            @Model.Name
+        </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="list-group">
+            <li class="list-group-item">მწარმოებელი : <span class="badge">@Model.Manufacturer.Name</span></li>
+            <li class="list-group-item">პროცესორი : <span class="badge">@Model.CPU</span></li>
+            <li class="list-group-item">ეკრანის ტიპი : <span class="badge">@Model.Screen</span></li>
+            <li class="list-group-item">ოპერაციული სისტემა : <span class="badge">@Model.OS</span></li>
+            <li class="list-group-item">მეხსიერება : <span class="badge">@Model.RAM</span></li>
+            <li class="list-group-item">ზომა : <span class="badge">@Model.Size</span></li>
+            <li class="list-group-item">წონა : <span class="badge">@Model.Weight</span></li>
+            <li class="list-group-item">ფასი : <span class="badge">@Model.Price ლარი</span></li>
+        </ul>
+    </div>
+</div>

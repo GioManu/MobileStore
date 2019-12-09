@@ -27,12 +27,13 @@ namespace MobileStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RAM = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
+                    Screen = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     Weight = table.Column<double>(nullable: false),
                     Size = table.Column<string>(nullable: true),
                     CPU = table.Column<string>(nullable: true),
                     OS = table.Column<string>(nullable: true),
-                    VideoUrl = table.Column<string>(nullable: true),
+                    VideoUrl = table.Column<string>(nullable: true, defaultValue: ""),
                     ManufacturerManufaturerID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

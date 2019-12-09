@@ -59,11 +59,16 @@ namespace MobileStore.Migrations
                     b.Property<int>("RAM")
                         .HasColumnType("int");
 
+                    b.Property<string>("Screen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Size")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VideoUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");

@@ -41,6 +41,9 @@ namespace MobileStore.Data
 
             modelBuilder.Entity<Product>()
                 .HasOne<Manufacturer>(mob => mob.Manufacturer);
+            modelBuilder.Entity<Product>()
+                .Property(mob => mob.VideoUrl)
+                .HasDefaultValue("");
 
             //Content Model Building
             modelBuilder.Entity<ProductImage>().HasKey(im => im.ImageID);

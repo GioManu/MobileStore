@@ -9,6 +9,6 @@ namespace MobileStore.Repos
     public interface IProductRepository
     {
         public IEnumerable<Product> GetAll();
-        public IEnumerable<Product> GetBy<T>(T args);
+        public Product GetByID(int prodID);
     }
 }

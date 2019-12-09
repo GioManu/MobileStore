@@ -5,23 +5,23 @@
         <nav aria-label="...">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@(Model.CurrentPage-1)">Previous</a>
+                    <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-manufacturer="@Model.PageParams.manufacturer" asp-route-price_from="@Model.PageParams.price_from" asp-route-price_to="@Model.PageParams.price_to" asp-route-name="@Model.PageParams.name" asp-route-page="@(Model.PageParams.page - 1)">Previous</a>
                 </li>
                 @for (int i = 1; i <= Model.TotalPages; i++)
                 {
-                    if (i.Equals(Model.CurrentPage))
+                    if (i.Equals(Model.PageParams.page))
                     {
-                        <li class="page-item active"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@i">@i</a></li>
+                        <li class="page-item active"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-manufacturer="@Model.PageParams.manufacturer" asp-route-price_from="@Model.PageParams.price_from" asp-route-price_to="@Model.PageParams.price_to" asp-route-name="@Model.PageParams.name" asp-route-page="@i">@i</a></li>
                     }
                     else
                     {
                         <li class="page-item">
-                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@i">@i<span class="sr-only">(current)</span></a>
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-manufacturer="@Model.PageParams.manufacturer" asp-route-price_from="@Model.PageParams.price_from" asp-route-price_to="@Model.PageParams.price_to" asp-route-name="@Model.PageParams.name" asp-route-page="@i">@i<span class="sr-only">(current)</span></a>
                         </li>
                     }
                 }
                 <li class="page-item">
-                    <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@(Model.CurrentPage+1)">Next</a>
+                    <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-manufacturer="@Model.PageParams.manufacturer" asp-route-price_from="@Model.PageParams.price_from" asp-route-price_to="@Model.PageParams.price_to" asp-route-name="@Model.PageParams.name" asp-route-page="@(Model.PageParams.page + 1)">Next</a>
                 </li>
             </ul>
         </nav>

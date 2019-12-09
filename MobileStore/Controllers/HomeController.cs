@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MobileStore.DataModels;
+using MobileStore.Helpers;
 using MobileStore.Models;
 using MobileStore.Repos;
 
@@ -19,6 +20,7 @@ namespace MobileStore.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
+        private readonly int MaxPageSize = 6;
         public HomeController(ILogger<HomeController> logger,IProductRepository ProdRepo,IContentRepository ContentRepo,IManufacturerRepository ManuRepo)
         {
             _logger = logger;
@@ -30,28 +32,48 @@ namespace MobileStore.Controllers
 
         public IActionResult Index(PageParametersViewModel pageParams)
         {
-            if(pageParams.PriceFrom <= 0) { pageParams.PriceFrom = 0; }
-            if(pageParams.PriceTo <= 0) { pageParams.PriceTo = 0; }
+            List<Product> AllProds = this.ProdRepo.GetAll().ToList();
 
+            ProductListHelper productHelper = new ProductListHelper(AllProds, ref pageParams,MaxPageSize);
 
+            IEnumerable<Product> SelectedProds = productHelper.GetProdsBySearch();
 
+            int TotalPages = productHelper.TotalPages();
+           
             ProductsPageViewModel productsPage = new ProductsPageViewModel
             {
-                Products = new List<Product>(),
+                Products = SelectedProds,
                 PageParams = new PageViewModel
                 {
-                    CurrentPage = 1,
-                    TotalPages = 3
+                    TotalPages = TotalPages,
+                    PageParams = pageParams
                 },
                 SearchBarParams = new SearchBarViewModel
                 {
-                    manufacturers = new List<Manufacturer>(),
+                    manufacturers = this.ManuRepo.GetAll().ToList(),
                     pageParams = pageParams
                 }
             };
             return View(productsPage);
         }
 
+
+        public IActionResult Product(int productId)
+        {
+            Product selectedProd = this.ProdRepo.GetByID(productId);
+
+            ProductViewModel prodModel = new ProductViewModel
+            {
+                product = selectedProd,
+                Carousel = new CarouselViewModel
+                {
+                    Images = selectedProd.Images,
+                    VideoUrl = selectedProd.VideoUrl
+                }
+            };
+
+            return View(prodModel);
+        }
         public IActionResult Privacy()
         {
             return View();

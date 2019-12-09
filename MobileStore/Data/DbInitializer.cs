@@ -37,9 +37,9 @@ namespace MobileStore.Data
             {
                 foreach (Product prod in content.MobileProduct)
                 {
-                    images.Add(new ProductImage { ImageUrl = "Content/img/1.jpg", ProductID=prod.MobileProductID });
-                    images.Add(new ProductImage { ImageUrl = "Content/img/3.jpg", ProductID = prod.MobileProductID });
-                    images.Add(new ProductImage { ImageUrl = "Content/img/4.jpg", ProductID = prod.MobileProductID });
+                    images.Add(new ProductImage { ImageUrl = "https://store.pine64.org/wp-content/uploads/2019/09/PinePhone-600x600.png", ProductID=prod.MobileProductID });
+                    images.Add(new ProductImage { ImageUrl = "https://www.lg.com/us/images/cell-phones/md07000171/gallery/medium01.jpg", ProductID = prod.MobileProductID });
+                    images.Add(new ProductImage { ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/413pD2TNh8L._SX466_.jpg", ProductID = prod.MobileProductID });
                 }
                 content.Image.AddRange(images);
             }
@@ -71,8 +71,10 @@ namespace MobileStore.Data
                     OS = OsVersions[rnd.Next(0, OsVersions.Count() - 1)],
                     Size = "2x3",
                     Weight = 150,
+                    Screen = "LCD",
+                    VideoUrl = "https://www.youtube.com/embed/uyU5rdJcd8U",
                     Manufacturer = manufacts[rnd.Next(0, manufacts.Count() - 1)],
-                    Price = rnd.Next(0, 100),
+                    Price = rnd.Next(1, 100),
                     CPU = "AngryDragon2.0",
                     RAM = 32
                 });

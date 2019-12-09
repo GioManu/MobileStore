@@ -5,13 +5,22 @@
 
 @await Component.InvokeAsync("SearchBar", new { searchBarViewModel = Model.SearchBarParams})
 <hr />
-@await Component.InvokeAsync("PageBar", new { pageViewModel = Model.PageParams})
 
+@await Component.InvokeAsync("PageBar", new { pageViewModel = Model.PageParams})
 <hr />
 
 <div class="container">
-    @foreach (Product product in Model.Products)
+    @if (Model.Products.Count() > 0)
     {
-        @await Component.InvokeAsync("ProductCard", new { product = product })
+        foreach (Product prod in Model.Products)
+        {
+            @await Component.InvokeAsync("ProductCard", new { prod = prod })
+        }
+
+    }else
+    {
+        <p>
+            Nothing Found :\
+        </p>
     }
 </div>

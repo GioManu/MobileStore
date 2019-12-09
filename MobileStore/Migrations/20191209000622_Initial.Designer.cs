@@ -10,7 +10,7 @@ using MobileStore.Data;
 namespace MobileStore.Migrations
 {
     [DbContext(typeof(AppDbContent))]
-    [Migration("20191208135800_Initial")]
+    [Migration("20191209000622_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,11 +61,16 @@ namespace MobileStore.Migrations
                     b.Property<int>("RAM")
                         .HasColumnType("int");
 
+                    b.Property<string>("Screen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Size")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VideoUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
